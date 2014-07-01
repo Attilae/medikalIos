@@ -3,7 +3,7 @@
         <div id="scroller">
             <ul class="list">                
                 <li class="item" ng:repeat="item in placesList" >
-                    <a ng-click="mapView({{item.id}}, {{item.latitude}}, {{item.longitude}})" href="">{{item.name}}
+                    <a href="#/menu/placeview/{{item.latitude}}/{{item.longitude}}">{{item.name}}
                         <br/>
                         {{item.zip_code}} {{item.city}}, {{item.street}} {{item.public_place_name}} {{item.number}}
                     </a>                

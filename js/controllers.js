@@ -316,7 +316,7 @@ mediaApp.controller('MedicineviewCtrl', function($scope, $ionicLoading, $statePa
 
 });
 
-mediaApp.controller('MedicineleaflatCtrl', function($scope, $ionicLoading, $stateParams, $state, $http, $window, $templateCache) {
+mediaApp.controller('MedicineleaflatCtrl', function($scope, $ionicLoading, $stateParams, $state, $http, $window, $templateCache, $sce) {
     $scope.navTitle = "Gyógyszerek";
 
     $scope.scroll = null;
@@ -352,7 +352,13 @@ mediaApp.controller('MedicineleaflatCtrl', function($scope, $ionicLoading, $stat
             }
         }];
 
-    $scope.frameUrl = "https://medikal.hu/hu/products/leaflat/product/" + $stateParams.id;
+    $scope.trustSrc = function(src) {
+        return $sce.trustAsResourceUrl(src);
+    }
+
+    $scope.frameUrl = $scope.trustSrc("https://medikal.hu/hu/products/leaflat/product/" + $stateParams.id);
+    
+    $scope.hide();
 
     /*$http({
      method: 'GET',
