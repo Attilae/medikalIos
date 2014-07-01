@@ -30,9 +30,21 @@ body {
     background-color: #FFF;*/
 }
 
+.has-header {
+    top: 60px;
+}
+
+.bar-header {
+    height: 60px;
+}
+
+.left-buttons {
+    padding-top: 1em;
+}
 
 .bar .title {
     font-size: 20px;
+    padding-top: 15px;
 }
 
 h1 {
@@ -452,7 +464,7 @@ input[type="text"], input[type="search"] {
 }
 
 .places-form {
-    top: 20px;
+    top: 0;
 }
 
 .questions {
