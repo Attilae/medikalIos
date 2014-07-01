@@ -143,13 +143,13 @@ mediaApp.controller('MedicinesCtrl', function($scope, $window, $state) {
 
         $scope.name = $scope.medicines.name;
 
-       /* $scope.viewCss = angular.element(document.querySelector('.view'));
-        $scope.bodyCss = angular.element(document.querySelector('body'));
-        $scope.mainCss = angular.element(document.querySelector('.mainCtrl'));
-
-        $scope.viewCss.css("top", "20px");
-        $scope.viewCss.css("top", "20px");
-        $scope.mainCss.css("top", "20px");*/
+        /* $scope.viewCss = angular.element(document.querySelector('.view'));
+         $scope.bodyCss = angular.element(document.querySelector('body'));
+         $scope.mainCss = angular.element(document.querySelector('.mainCtrl'));
+         
+         $scope.viewCss.css("top", "20px");
+         $scope.viewCss.css("top", "20px");
+         $scope.mainCss.css("top", "20px");*/
 
         if ($scope.name != null) {
             $state.go('menu.searchmedicines', {
@@ -244,6 +244,17 @@ mediaApp.controller('SearchmedicinesCtrl', function($scope, $ionicLoading, $http
 mediaApp.controller('MedicineviewCtrl', function($scope, $ionicLoading, $stateParams, $state, $http, $window, $templateCache) {
     $scope.navTitle = "Gyógyszerek";
 
+    $scope.show = function() {
+        $scope.loading = $ionicLoading.show({
+            content: 'Betöltés...'
+        });
+    };
+    $scope.hide = function() {
+        $scope.loading.hide();
+    };
+
+    $scope.show();
+
     $scope.scroll = null;
 
     $scope.iScroll = function() {
@@ -256,28 +267,9 @@ mediaApp.controller('MedicineviewCtrl', function($scope, $ionicLoading, $statePa
         }, 100);
     }
 
-    $scope.question = function(id) {
-        console.log(id);
-        $state.go('menu.productquestion', {
-            id:  $stateParams.id
-        });
-    }
 
-    $scope.leaflat = function() {
-        console.log( $stateParams.id);
-        $window.open("http://medikal.hu/hu/products/leaflat/product/" +  $stateParams.id, '_blank');
-    }
 
-    $scope.show = function() {
-        $scope.loading = $ionicLoading.show({
-            content: 'Betöltés...'
-        });
-    };
-    $scope.hide = function() {
-        $scope.loading.hide();
-    };
 
-    $scope.show();
 
     $stateParams.productId;
 
@@ -296,7 +288,7 @@ mediaApp.controller('MedicineviewCtrl', function($scope, $ionicLoading, $statePa
         timeout: 15000,
         //cache: $templateCache
     }).success(function(result) {
-        console.log(result);
+        //console.log(result);
         $scope.product = result;
         $scope.iScroll();
         $scope.hide();
@@ -305,6 +297,20 @@ mediaApp.controller('MedicineviewCtrl', function($scope, $ionicLoading, $statePa
         $scope.hide();
         $state.go('menu.error');
     });
+
+    $scope.question = function(id) {
+        console.log(id);
+        $state.go('menu.productquestion', {
+            id: $stateParams.id
+        });
+    }
+
+    $scope.leaflat = function(id) {
+        //$window.open("http://medikal.hu/hu/products/leaflat/product/" + $stateParams.id, '_blank');
+        $state.go('menu.medicineleaflat', {
+            id: id
+        });
+    }
 
 
 
@@ -346,22 +352,24 @@ mediaApp.controller('MedicineleaflatCtrl', function($scope, $ionicLoading, $stat
             }
         }];
 
-    $http({
-        method: 'GET',
-        url: "http://medikal.hu/hu/products/leaflat/product/" + $stateParams.id,
-        data: {},
-        timeout: 15000,
-        cache: $templateCache
-    }).success(function(result) {
-        console.log(result);
-        $scope.frameUrl = result;
-        $scope.iScroll();
-        $scope.hide();
-    }).error(function(e) {
-        //console.log(e);
-        $scope.hide();
-        $state.go('menu.error');
-    });
+    $scope.frameUrl = "https://medikal.hu/hu/products/leaflat/product/" + $stateParams.id;
+
+    /*$http({
+     method: 'GET',
+     url: "http://medikal.hu/hu/products/leaflat/product/" + $stateParams.id,
+     data: {},
+     timeout: 15000,
+     cache: $templateCache
+     }).success(function(result) {
+     console.log(result);
+     $scope.frameUrl = result;
+     //$scope.iScroll();
+     $scope.hide();
+     }).error(function(e) {
+     //console.log(e);
+     $scope.hide();
+     $state.go('menu.error');
+     });*/
 
 });
 
