@@ -4,12 +4,12 @@
             <div id="scroller">		
                 <ul class="list">  
                     <li class="item" ng:repeat="item in medicinesList" >
-                        <a ng-click="medicineView({{item.id}})" href="">{{item.name}}</a> 
+                        <a ng-click="medicineView({{item.id}})" href="">{{item.name}} {{item.presentation}}/{{item.quantity_unit}}</a> 
                     </li>
                 </ul>
             </div>
         
-        <div ng-if="medicinesList.length == 0">
+        <div class="no-result" ng-if="medicinesList.length == 0">
             Nincs találat
         </div>
     </ion-content>

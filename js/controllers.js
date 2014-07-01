@@ -143,13 +143,13 @@ mediaApp.controller('MedicinesCtrl', function($scope, $window, $state) {
 
         $scope.name = $scope.medicines.name;
 
-        $scope.viewCss = angular.element(document.querySelector('.view'));
+       /* $scope.viewCss = angular.element(document.querySelector('.view'));
         $scope.bodyCss = angular.element(document.querySelector('body'));
         $scope.mainCss = angular.element(document.querySelector('.mainCtrl'));
 
         $scope.viewCss.css("top", "20px");
         $scope.viewCss.css("top", "20px");
-        $scope.mainCss.css("top", "20px");
+        $scope.mainCss.css("top", "20px");*/
 
         if ($scope.name != null) {
             $state.go('menu.searchmedicines', {
