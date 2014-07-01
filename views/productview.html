@@ -1,0 +1,97 @@
+<ion-view class="bgProduct" title="navTitle" left-buttons="leftButtons" right-buttons="rightButtons">    
+    <ion-content has-header="true" padding="true">                     
+        <div class="list productview">
+
+            <div class="item item-divider">
+                {{product.name}}
+            </div>
+            <ul>
+                <li class="item">
+                    {{product.presentation}} /{{product.quantity_unit}}
+                </li>               
+            </ul>
+
+            <div class="item item-divider">
+                Javallat
+            </div>
+            <ul>
+                <li class="item">
+                    {{product.indication}}
+                </li>               
+            </ul>
+
+            <div class="item item-divider">
+                Ellenjavallat
+            </div>
+            <ul>
+                <li class="item">
+                    {{product.opp_indication}}
+                </li>               
+            </ul>
+
+            <div class="item item-divider">
+                Adagolás
+            </div>
+            <ul>
+                <li class="item">
+                    {{product.dosage}}
+                </li>               
+            </ul>
+
+            <div class="item item-divider">
+                Összetevők
+            </div>
+            <ul>
+                <li class="item">
+                    {{product.content}}
+                </li>               
+            </ul>
+
+            <div class="item item-divider">
+                Kölcsönhatás
+            </div>
+            <ul>
+                <li class="item">
+                    {{product.interaction}}
+                </li>               
+            </ul>
+
+            <div class="item item-divider">
+                Mellékhatás
+            </div>
+            <ul>
+                <li class="item">
+                    {{product.side_effect}}
+                </li>               
+            </ul>
+            
+            
+
+            <div class="item item-divider">                
+                Vásárlás
+            </div>
+            <ul>
+                <li class="item">
+                    Megvásárolom a legközelebbi gyógyszertárban<br/>
+                    <a href="#/menu/gps" class="button button-clear gps-search-product-button">
+                        Mehet
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="item item-divider">                
+                Kérdőív
+            </div>
+            <ul>
+                <li class="item">
+                    <a href="#/menu/productquestion/{{product.product_id}}" class="button button-clear gps-search-product-button">
+                        Mehet
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+    </ion-content>
+
+</ion-view>

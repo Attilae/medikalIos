@@ -1,0 +1,38 @@
+<ion-view title="navTitle" left-buttons="leftButtons">
+
+    <ion-content has-header="true" padding="true" scroll="false">
+
+        <div scroll="false" class="content has-header has-footer places-form">
+            <form>
+                <div class="list">
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Város</span>
+                        <!--<input id="city" name="city" type="text" ng-model="places.city" ng-blur="searchPlace()">-->
+                        <input id="city" name="city" type="text" ng-model="places.city" ng-blur="fixHeight()">
+                    </label>
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Irányítószám</span>
+                        <!--<input id="zip_code" name="zip_code" type="text"  ng-model="places.zip_code" ng-blur="searchPlace()">-->
+                        <input id="zip_code" name="zip_code" type="text"  ng-model="places.zip_code" ng-blur="fixHeight()">
+                    </label>
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Gyógyszertár neve</span>
+                        <!--<input id="name" name="name" type="text"  ng-model="places.name" ng-blur="searchPlace()">-->
+                        <input id="name" name="name" type="text"  ng-model="places.name" ng-blur="fixHeight()">
+                    </label>
+                </div>   
+
+                <button hm-tap="gps()" class="button button-full button-clear" id="search-medicines">Keresés lokáció alapján</button>
+                
+            </form>
+        </div>           
+
+    </ion-content>
+
+    <ion-footer-bar>
+        <div class="bar bar-footer places-search">
+            <button ng-click="searchPlace()" class="button button-full button-assertive" id="search-places">Keresés</button>
+        </div>
+    </ion-footer-bar>
+
+</ion-view>

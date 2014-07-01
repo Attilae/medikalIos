@@ -1,0 +1,99 @@
+<ion-view class="bgBody" title="navTitle" left-buttons="leftButtons">    
+    <ion-content has-header="true" has-footer="true" scroll="false">        
+
+        <div ng-switch="isLoading">
+
+            <!-- BEGIN: Loading View. -->
+            <p ng-switch-when="true">
+
+                Test betöltése... {{ percentLoaded }}%
+
+            </p>
+            <!-- END: Loading View. -->
+
+            <!-- BEGIN: Results View. -->
+            <div
+                ng-switch-when="false"
+                ng-switch="isSuccessful">
+
+                <p ng-switch-when="true">
+
+                    <img
+                        ng-repeat="src in imageLocations"
+                        ng-src="{{ src }}"
+                        style="width: 100px ; margin-right: 10px ;display: none;"
+                        />
+
+                </p>
+
+                <p ng-switch-when="false">
+
+                    <strong>Oops</strong>: One of your images failed to load :(
+
+                </p>
+
+            </div>
+        </div>
+
+        <dl id="officeMap">
+            <img src="img/body/00.png" id="body-image" />
+            <dt id="agy">Agy</dt>
+            <dd ng-show="front" class="front" id="agyDef"><a href="#/menu/agy"><span>#/menu/agy</span></a></dd>
+            <dt id="arc">Arc</dt>
+            <dd ng-show="front" class="front" id="arcDef"><a href="#/menu/arc"><span>#/menu/arc</span></a></dd>            
+            <dt id="torok">Torok</dt>
+            <dd ng-show="front" class="front" id="torokDef"><a href="#/menu/torok"><span>#/menu/torok</span></a></dd>
+            <dt id="mellkas">Mellkas</dt>
+            <dd ng-show="front" class="front" id="mellkasDef"><a href="#/menu/mellkas"><span>#/menu/mellkas</span></a></dd>
+            <dt id="has">Has</dt>           
+            <dd ng-show="front" class="front" id="hasDef"><a href="#/menu/hass"><span>#/menu/hass</span></a></dd>  
+            <dt id="agyek">Ágyék</dt>
+            <dd ng-show="front" class="front" id="agyekDef"><a href="#/menu/agyek"><span>#/menu/agyek</span></a></dd>                                         
+            <dt id="karBal">KarBal</dt>
+            <dd ng-show="front" class="front" id="karBalDef"><a href="#/menu/kar"><span>#/menu/kar</span></a></dd>   
+            <dt id="karJobb">KarJobb</dt>
+            <dd ng-show="front" class="front" id="karJobbDef"><a href="#/menu/kar"><span>#/menu/kar</span></a></dd>               
+
+            <dt id="kar">Kar</dt>
+            <dd ng-show="side" class="side" id="karDef"><a href="#/menu/kar"><span>#/menu/disease/kar</span></a></dd>   
+
+            <dt id="terd">Térd</dt>
+            <dd ng-show="front" class="front back" id="terdDef"><a href="#/menu/lab"><span>#/menu/lab</span></a></dd>                                  
+
+
+            <dt id="gerinc">Gerinc</dt>
+            <dd ng-show="back" class="back" id="gerincDef"><a href="#/menu/hat"><span>#/menu/disease/gerinc</span></a></dd>
+            <dt id="vese">Vese</dt>
+            <dd ng-show="back" class="back" id="veseDef"><a href="#/menu/fenek"><span>#/menu/disease/vese</span></a></dd>
+
+        </dl>             
+        <!--<img ng-click="rotate()" id="rotate" class="button button-clear" src="img/rotate.png">      -->
+        <img hm-tap="rotate()" hm-hold="rotateStart()" hm-release="rotateStop()" id="rotate" class="button button-clear" src="img/rotate.png">        
+
+        
+        <a href="#/menu/bor" id="bor-button" class="button button-clear">
+                Bőr
+            </a>
+        
+        
+            <a href="#/menu/szervezet" id="szervezet-button" class="button button-clear">
+                Szervezet
+            </a>       
+
+    </ion-content>
+
+    <ion-footer-bar align-title="center" class="bar-dark">
+        <div class="buttons">
+            <button id="body-button" class="button button-clear">
+                Test
+            </button>
+        </div>
+
+        <div class="buttons">
+            <a id="disease-button" href="#/menu/diseaselist" class="button button-clear">
+                Tünetlista
+            </a>
+        </div>
+    </ion-footer-bar>
+
+</ion-view>

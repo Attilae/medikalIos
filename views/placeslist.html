@@ -1,0 +1,21 @@
+<ion-view class="bgSearch" title="navTitle" left-buttons="leftButtons">    
+    <ion-content has-header="true" scroll="false" id="gyogyszertarlista">             
+        <div id="scroller">
+            <ul class="list">                
+                <li class="item" ng:repeat="item in placesList" >
+                    <a ng-click="mapView({{item.id}}, {{item.latitude}}, {{item.longitude}})" href="">{{item.name}}
+                        <br/>
+                        {{item.zip_code}} {{item.city}}, {{item.street}} {{item.public_place_name}} {{item.number}}
+                    </a>                
+                </li>
+                <div ng-if="placesList.length == 0">
+                    Nincs találat
+                </div>
+            </ul>
+        </div>
+
+
+    </ion-content>
+
+
+</ion-view>

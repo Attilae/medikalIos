@@ -1,0 +1,150 @@
+<ion-view class="bgProduct" title="navTitle" left-buttons="leftButtons" right-buttons="rightButtons">    
+    <ion-content has-header="true" padding="true" scroll="false" id="kerdoiv">                     
+        <div id="scroller">		                	
+            <ul class="list">
+
+            <form>
+                <table class="questions" border="0">                    
+                    <tbody>
+                        <tr>
+                            <td><strong>A bejelentő adatai</strong></td>                        
+                        </tr>                       
+                        <tr>
+                            <td>A bejelentő neve:</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="name"></td>
+                        </tr>                    
+                        <tr>
+                            <td>A bejelentő telefonszáma:</td>
+                        </tr>
+                        <tr>
+                            <td> <input type="text" name="phone"></td>
+                        </tr>                        
+                        <tr>
+                            <td><strong>A beteg és a mellékhatás adatai</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Beteg nevének kezdőbetűi:</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="monogram"></td>
+                        </tr>
+                        <tr>
+                            <td>Születési dátum:</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="birthdate"></td>
+                        </tr>
+                        <tr>
+                            <td>Beteg neme: férfi/nő</td>
+                        </tr>
+                        <tr>
+                            <td><select name="seriousness">
+                                    <option value=""></option>
+                                    <option value="no">Nő</option>
+                                    <option value="ferfi">Férfi</option>                                    
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Mellékhatás kezdetének dátuma:</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="side_effect_start"></td>
+                        </tr>
+                        <tr>
+                            <td>Mellékhatás végének dátuma:</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="side_effect_end"></td>
+                        </tr>
+                        <tr>
+                            <td>Mellékhatás részletes leírása <br/>
+                                (a mellékhatás szempontjából fontos vizsgálatok eredményeivel,<br/>
+                                a mellékhatás kezelésének leírásával):</td>
+                        </tr>
+                        <tr>
+                            <td>A mellékhatás súlyosság szerinti besorolása:</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select name="seriousness">
+                                    <option value=""></option>
+                                    <option value="meghalt">beteg meghalt</option>
+                                    <option value="eletveszely">a beteg élete veszélyben volt</option>
+                                    <option value="meghosszabbodott_kezeles">kórházi kezelés vált szükségessé</option>
+                                    <option value="egeszsegkarosodas">rokkantság vagy jelentős készségkárosodás lépett fel</option>
+                                    <option value="szuletesi_rendellenesseg">születési rendellenesség alakult ki</option>
+                                    <option value="egyeb">egyéb okból volt súlyos a mellékhatás</option>
+                                    <option value="nem_volt_sulyos">nem volt súlyos a mellékhatás</option>
+                                </select>
+                            </td>
+                        </tr>                        
+                        <tr>
+                            <td><strong>A gyanúsítható gyógyszerek adatai</strong></td>                            
+                        </tr>
+                        <tr>
+                            <td><em>Kérjük, adja meg azokat a gyógyszereket, <br/>
+                                    melyeket a mellékhatás előidézésével gyanúsít!</em></td>                            
+                        </tr>  
+                        <tr>
+                            <td>A kezelés kezdete és vége:</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="treatment_start"></td>
+                        </tr>
+                        <tr>
+                            <td>Indikáció</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="indication"></td>
+                        </tr>                        
+                        <tr>
+                            <td><strong>Az együtt alkalmazott gyógyszerek adatai</strong></td>                            
+                        </tr>
+                        <tr>
+                            <td><em>Kérjük, adja meg azokat a gyógyszereket, <br/>
+                                    melyeket a mellékhatás kialakulásával egyidejűleg szedett!</em></td>                            
+                        </tr>
+                        <tr>
+                            <td>Gyógyszer vagy hatóanyag neve és gyógyszerformája</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="another_name"></td>
+                        </tr>
+                        <tr>
+                            <td>Adagolás és az alkalmazás módja</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="another_usage"></td>
+                        </tr>
+                        <tr>
+                            <td>A kezelés kezdete és vége</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="another_start"></td>
+                        </tr>
+                        <tr>
+                            <td>Indikáció</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="another_indication"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                 <br/>
+                                <button ng-click="sent()" type="button" class="button">Elküld</button>
+                            </td>
+                        </tr>
+                    </tbody></table>
+            </form>
+                
+                </ul>
+        </div>
+
+        </div>
+
+    </ion-content>
+
+</ion-view>
