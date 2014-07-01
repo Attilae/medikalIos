@@ -401,6 +401,7 @@ input[type="text"], input[type="search"] {
     position: absolute;
     top: 15%;
     font-size:24px;
+    margin-top: 20px;
 }
 
 .gps-search-product-button {
@@ -469,6 +470,10 @@ input[type="text"], input[type="search"] {
 
 .places-form-list {
     margin-bottom: 5px;
+}
+
+.productview-leaflat {
+    height: 100%;
 }
 
 .questions {

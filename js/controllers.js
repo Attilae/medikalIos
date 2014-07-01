@@ -286,7 +286,7 @@ mediaApp.controller('MedicineviewCtrl', function($scope, $ionicLoading, $statePa
         url: 'http://medikal.hu/hu/products/jsonview/id/' + $stateParams.id,
         data: {},
         timeout: 15000,
-        //cache: $templateCache
+        cache: $templateCache
     }).success(function(result) {
         //console.log(result);
         $scope.product = result;
@@ -356,7 +356,7 @@ mediaApp.controller('MedicineleaflatCtrl', function($scope, $ionicLoading, $stat
         return $sce.trustAsResourceUrl(src);
     }
 
-    $scope.frameUrl = $scope.trustSrc("https://medikal.hu/hu/products/leaflat/product/" + $stateParams.id);
+    $scope.frameUrl = $scope.trustSrc("http://medikal.hu/hu/products/leaflat/product/" + $stateParams.id);
     
     $scope.hide();
 
@@ -1054,7 +1054,7 @@ mediaApp.controller('GpsCtrl', function($scope, $location, $ionicLoading, $state
                                     url: 'http://medikal.hu/hu/places/jsonsearch/city//zip_code/' + postalCode,
                                     data: {},
                                     timeout: 10000,
-                                    //cache: $templateCache
+                                    cache: $templateCache
                                 }).success(function(result) {
                                     console.log(result);
                                     $scope.placesList = result;
