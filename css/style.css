@@ -464,7 +464,11 @@ input[type="text"], input[type="search"] {
 }
 
 .places-form {
-    top: 0;
+    top: -10px;
+}
+
+.places-form-list {
+    margin-bottom: 5px;
 }
 
 .questions {
