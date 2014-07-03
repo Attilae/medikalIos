@@ -137,7 +137,7 @@ mediaApp.controller('MedicinesCtrl', function($scope, $window, $state, $ionicLoa
 
     $scope.searchMedicines = function() {
 
-        $scope.show();
+        //$scope.show();
 
         $scope.name = $scope.medicines.name;
 
@@ -180,10 +180,10 @@ mediaApp.controller('SearchmedicinesCtrl', function($scope, $ionicLoading, $http
 
 
     $scope.hide = function() {
-        $scope.loading = $ionicLoading.show({
+        /*$scope.loading = $ionicLoading.show({
             content: 'Betöltés...'
         });
-        $scope.loading.hide();
+        $scope.loading.hide();*/
          $scope.loadingItem = angular.element(document.querySelector('#loading-item'));
          $scope.loadingItem.css("display", "none");
 
@@ -681,7 +681,7 @@ mediaApp.controller('DiseaseCtrl', function($scope, $location, $stateParams, $st
         });
     };
 
-    $scope.show();
+    //$scope.show();
 
     $scope.scroll = null;
 
@@ -696,7 +696,9 @@ mediaApp.controller('DiseaseCtrl', function($scope, $location, $stateParams, $st
     }
 
     $scope.hide = function() {
-        $scope.loading.hide();
+        //$scope.loading.hide();
+        $scope.loadingItem = angular.element(document.querySelector('#loading-item'));
+         $scope.loadingItem.css("display", "none");
     };
 
     $scope.leftButtons = [{
@@ -919,7 +921,7 @@ mediaApp.controller('PlaceslistCtrl', function($scope, $ionicLoading, $timeout, 
         });
     };
 
-    $scope.show();
+    //$scope.show();
 
     $scope.scroll = null;
 
@@ -934,7 +936,9 @@ mediaApp.controller('PlaceslistCtrl', function($scope, $ionicLoading, $timeout, 
     }
 
     $scope.hide = function() {
-        $scope.loading.hide();
+        //$scope.loading.hide();
+        $scope.loadingItem = angular.element(document.querySelector('#loading-item'));
+         $scope.loadingItem.css("display", "none");
     };
 
     $scope.leftButtons = [{

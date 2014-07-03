@@ -3,6 +3,9 @@
 
         <div id="scroller">
             <ul class="list">
+                <li class="no-result" id="loading-item">
+                    Betöltés...
+                </li>
                 <li class="item" ng:repeat="item in disease" >
                     <a href="#/menu/medicineview/{{item.id}}">{{item.name}}</a>                
                 </li>

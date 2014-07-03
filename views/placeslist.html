@@ -1,7 +1,10 @@
 <ion-view class="bgSearch" title="navTitle" left-buttons="leftButtons">    
     <ion-content has-header="true" scroll="false" id="gyogyszertarlista">             
         <div id="scroller">
-            <ul class="list">                
+            <ul class="list">   
+                <li class="no-result" id="loading-item">
+                    Betöltés...
+                </li>
                 <li class="item" ng:repeat="item in placesList" >
                     <a href="#/menu/placeview/{{item.latitude}}/{{item.longitude}}">{{item.name}}
                         <br/>
