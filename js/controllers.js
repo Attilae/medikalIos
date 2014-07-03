@@ -105,7 +105,7 @@ mediaApp.controller('ConditionsCtrl', function($scope, $location) {
 })
 
 mediaApp.controller('MedicinesCtrl', function($scope, $window, $state, $ionicLoading) {
-    $scope.navTitle = "Gyógyszerek";  
+    $scope.navTitle = "Gyógyszerek";
 
     $scope.leftButtons = [{
             type: 'button-clear',
@@ -117,12 +117,12 @@ mediaApp.controller('MedicinesCtrl', function($scope, $window, $state, $ionicLoa
 
     $scope.master = {};
     $scope.name = "";
-    
+
     $scope.show = function() {
         $scope.loading = $ionicLoading.show({
             content: 'Betöltés...'
         });
-    };    
+    };
 
 
     $scope.update = function(medicines) {
@@ -136,7 +136,7 @@ mediaApp.controller('MedicinesCtrl', function($scope, $window, $state, $ionicLoa
     $scope.reset();
 
     $scope.searchMedicines = function() {
-        
+
         $scope.show();
 
         $scope.name = $scope.medicines.name;
@@ -154,7 +154,7 @@ mediaApp.controller('MedicinesCtrl', function($scope, $window, $state, $ionicLoa
 
 });
 
-mediaApp.controller('SearchmedicinesCtrl', function($scope, $ionicLoading, $http, $stateParams, $state, $window, $templateCache) {
+mediaApp.controller('SearchmedicinesCtrl', function($scope, $ionicLoading, $http, $stateParams, $state, $window, $templateCache, $timeout) {
 
     $scope.navTitle = "Gyógyszerek";
 
@@ -205,7 +205,10 @@ mediaApp.controller('SearchmedicinesCtrl', function($scope, $ionicLoading, $http
     }).success(function(result) {
         $scope.medicinesList = result;
         $scope.iScroll();
-        $scope.hide();
+        $scope.hideLoading = function() {
+            $scope.hide();
+        }
+        $timeout($scope.hideLoading(), 1500);        
     }).error(function(e) {
         $scope.hide();
         $state.go('menu.error');
@@ -348,7 +351,7 @@ mediaApp.controller('MedicineleaflatCtrl', function($scope, $ionicLoading, $stat
     }
 
     $scope.frameUrl = $scope.trustSrc("http://medikal.hu/hu/products/leaflat/product/" + $stateParams.id);
-    
+
     $scope.hide();
 
     /*$http({
