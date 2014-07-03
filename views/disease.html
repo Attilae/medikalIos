@@ -6,10 +6,10 @@
                 <li class="item" ng:repeat="item in disease" >
                     <a href="#/menu/medicineview/{{item.id}}">{{item.name}}</a>                
                 </li>
-            </ul>
-            <div ng-if="disease.length == 0">
-                Nincs találat
-            </div>
+                <li class="no-result" ng-if="disease.length == 0">
+                    Nincs találat
+                </li>
+            </ul>            
         </div>
 
     </ion-content>

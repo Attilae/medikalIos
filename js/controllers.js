@@ -2,7 +2,7 @@
 
 mediaApp.controller('MainCtrl', function($scope, $timeout) {
 
-    $scope.navTitle = 'Medikal';
+    $scope.navTitle = 'Gyógyszerinfó';
 
     ionic.Platform.ready(function() {
         console.log("Cordova is ready");
@@ -353,6 +353,8 @@ mediaApp.controller('MedicineleaflatCtrl', function($scope, $ionicLoading, $stat
     $scope.frameUrl = $scope.trustSrc("http://medikal.hu/hu/products/leaflat/product/" + $stateParams.id);
 
     $scope.hide();
+    
+    $scope.iScroll();
 
     /*$http({
      method: 'GET',

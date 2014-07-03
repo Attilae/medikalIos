@@ -395,6 +395,7 @@ input[type="text"], input[type="search"] {
     position: absolute;
     top: 10%;
     font-size:24px;
+    margin-top: 10px;
 }
 
 #szervezet-button {

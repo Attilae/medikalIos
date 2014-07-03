@@ -8,9 +8,9 @@
                         {{item.zip_code}} {{item.city}}, {{item.street}} {{item.public_place_name}} {{item.number}}
                     </a>                
                 </li>
-                <div ng-if="placesList.length == 0">
+                 <li class="no-result" ng-if="placesList.length == 0">
                     Nincs találat
-                </div>
+                </li>
             </ul>
         </div>
 
