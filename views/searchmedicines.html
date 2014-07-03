@@ -1,18 +1,19 @@
 <ion-view class="bgSearch" title="navTitle" left-buttons="leftButtons">    
     <ion-content has-header="true" scroll="false" id="gyogyszerlista">             
-        
-            <div id="scroller">		
-                <ul class="list">  
-                    <li class="item" ng:repeat="item in medicinesList" >
-                        <!--<a ng-click="medicineView({{item.id}})" href="">{{item.name}} {{item.presentation}}/{{item.quantity_unit}}</a> -->
-                        <a href="#/menu/medicineview/{{item.id}}">{{item.name}} {{item.presentation}}/{{item.quantity_unit}}</a>
-                    </li>
-                </ul>
+
+        <div id="scroller">		
+            <ul class="list">  
+                <li class="item" ng:repeat="item in medicinesList" >
+                    <!--<a ng-click="medicineView({{item.id}})" href="">{{item.name}} {{item.presentation}}/{{item.quantity_unit}}</a> -->
+                    <a href="#/menu/medicineview/{{item.id}}">{{item.name}} {{item.presentation}}/{{item.quantity_unit}}</a>
+                </li>
+            </ul>
+            <div class="no-result" ng-if="medicinesList.length == 0">
+                Nincs találat
             </div>
-        
-        <div class="no-result" ng-if="medicinesList.length == 0">
-            Nincs találat
         </div>
+
+
     </ion-content>
 
 </ion-view>
