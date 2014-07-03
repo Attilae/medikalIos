@@ -184,6 +184,9 @@ mediaApp.controller('SearchmedicinesCtrl', function($scope, $ionicLoading, $http
             content: 'Betöltés...'
         });
         $scope.loading.hide();
+         $scope.loadingItem = angular.element(document.querySelector('#loading-item'));
+         $scope.loadingItem.css("display", "none");
+
     };
 
     $scope.leftButtons = [{
@@ -205,10 +208,7 @@ mediaApp.controller('SearchmedicinesCtrl', function($scope, $ionicLoading, $http
     }).success(function(result) {
         $scope.medicinesList = result;
         $scope.iScroll();
-        $scope.hideLoading = function() {
-            $scope.hide();
-        }
-        $timeout($scope.hideLoading(), 1500);        
+        $scope.hide();
     }).error(function(e) {
         $scope.hide();
         $state.go('menu.error');
@@ -353,7 +353,7 @@ mediaApp.controller('MedicineleaflatCtrl', function($scope, $ionicLoading, $stat
     $scope.frameUrl = $scope.trustSrc("http://medikal.hu/hu/products/leaflat/product/" + $stateParams.id);
 
     $scope.hide();
-    
+
     $scope.iScroll();
 
     /*$http({
