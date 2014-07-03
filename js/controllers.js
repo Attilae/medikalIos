@@ -104,18 +104,8 @@ mediaApp.controller('ConditionsCtrl', function($scope, $location) {
 
 })
 
-mediaApp.controller('MedicinesCtrl', function($scope, $window, $state) {
-    $scope.navTitle = "Gyógyszerek";
-
-    $scope.fixHeight = function() {
-        $scope.viewCss = angular.element(document.querySelector('.view'));
-        $scope.bodyCss = angular.element(document.querySelector('body'));
-        $scope.mainCss = angular.element(document.querySelector('.mainCtrl'));
-
-        $scope.viewCss.css("top", "20px");
-        $scope.viewCss.css("top", "20px");
-        $scope.mainCss.css("top", "20px");
-    }
+mediaApp.controller('MedicinesCtrl', function($scope, $window, $state, $ionicLoading) {
+    $scope.navTitle = "Gyógyszerek";  
 
     $scope.leftButtons = [{
             type: 'button-clear',
@@ -127,6 +117,12 @@ mediaApp.controller('MedicinesCtrl', function($scope, $window, $state) {
 
     $scope.master = {};
     $scope.name = "";
+    
+    $scope.show = function() {
+        $scope.loading = $ionicLoading.show({
+            content: 'Betöltés...'
+        });
+    };    
 
 
     $scope.update = function(medicines) {
@@ -140,16 +136,10 @@ mediaApp.controller('MedicinesCtrl', function($scope, $window, $state) {
     $scope.reset();
 
     $scope.searchMedicines = function() {
+        
+        $scope.show();
 
         $scope.name = $scope.medicines.name;
-
-        /* $scope.viewCss = angular.element(document.querySelector('.view'));
-         $scope.bodyCss = angular.element(document.querySelector('body'));
-         $scope.mainCss = angular.element(document.querySelector('.mainCtrl'));
-         
-         $scope.viewCss.css("top", "20px");
-         $scope.viewCss.css("top", "20px");
-         $scope.mainCss.css("top", "20px");*/
 
         if ($scope.name != null) {
             $state.go('menu.searchmedicines', {
@@ -187,11 +177,12 @@ mediaApp.controller('SearchmedicinesCtrl', function($scope, $ionicLoading, $http
         });
     };
 
-    $scope.show();
-
 
 
     $scope.hide = function() {
+        $scope.loading = $ionicLoading.show({
+            content: 'Betöltés...'
+        });
         $scope.loading.hide();
     };
 
