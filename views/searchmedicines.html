@@ -7,10 +7,10 @@
                     <!--<a ng-click="medicineView({{item.id}})" href="">{{item.name}} {{item.presentation}}/{{item.quantity_unit}}</a> -->
                     <a href="#/menu/medicineview/{{item.id}}">{{item.name}} {{item.presentation}}/{{item.quantity_unit}}</a>
                 </li>
-            </ul>
-            <div class="no-result" ng-if="medicinesList.length == 0">
-                Nincs találat
-            </div>
+                <li class="no-result" ng-if="medicinesList.length == 0">
+                    Nincs találat
+                </li>
+            </ul>            
         </div>
 
 
