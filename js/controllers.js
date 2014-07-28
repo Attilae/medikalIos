@@ -323,6 +323,14 @@ mediaApp.controller('MedicineleaflatCtrl', function($scope, $ionicLoading, $stat
             $scope.scroll.refresh();
         }, 100);
     }
+    
+    $scope.leftButtons = [{
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $window.history.back();
+        }
+    }];
 
     /*$scope.show = function() {
         $scope.loading = $ionicLoading.show({
@@ -361,7 +369,7 @@ mediaApp.controller('MedicineleaflatCtrl', function($scope, $ionicLoading, $stat
 
     //$scope.hide();
 
-    $scope.iScroll();      
+    //$scope.iScroll();      
     
     
 });
