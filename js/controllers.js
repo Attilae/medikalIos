@@ -6,12 +6,12 @@ mediaApp.controller('MainCtrl', function($scope, $timeout) {
 
     ionic.Platform.ready(function() {
         console.log("Cordova is ready");
-        // Add device specific stuff here
+    // Add device specific stuff here
     });
 
 
 
-    /*
+/*
      $scope.toggle = true;
      $scope.hideAdv = function() {
      $scope.toggle=false;
@@ -45,48 +45,48 @@ mediaApp.controller('ErrorCtrl', function($scope, $location) {
 
     ionic.Platform.ready(function() {
         console.log("Cordova is ready");
-        // Add device specific stuff here
+    // Add device specific stuff here
     });
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $location.path("/");
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $location.path("/");
+        }
+    }];
 })
 
 mediaApp.controller('QuestionsentCtrl', function($scope, $location) {
 
     ionic.Platform.ready(function() {
         console.log("Cordova is ready");
-        // Add device specific stuff here
+    // Add device specific stuff here
     });
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $location.path("/");
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $location.path("/");
+        }
+    }];
 })
 
 mediaApp.controller('GpserrorCtrl', function($scope, $location) {
 
     ionic.Platform.ready(function() {
         console.log("Cordova is ready");
-        // Add device specific stuff here
+    // Add device specific stuff here
     });
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $location.path("/");
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $location.path("/");
+        }
+    }];
 })
 
 mediaApp.controller('ConditionsCtrl', function($scope, $location) {
@@ -95,12 +95,12 @@ mediaApp.controller('ConditionsCtrl', function($scope, $location) {
 
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $location.path("/");
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $location.path("/");
+        }
+    }];
 
 })
 
@@ -108,12 +108,12 @@ mediaApp.controller('MedicinesCtrl', function($scope, $window, $state, $ionicLoa
     $scope.navTitle = "Gyógyszerek";
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $window.history.back();
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $window.history.back();
+        }
+    }];
 
     $scope.master = {};
     $scope.name = "";
@@ -184,18 +184,18 @@ mediaApp.controller('SearchmedicinesCtrl', function($scope, $ionicLoading, $http
             content: 'Betöltés...'
         });
         $scope.loading.hide();*/
-         $scope.loadingItem = angular.element(document.querySelector('#loading-item'));
-         $scope.loadingItem.css("display", "none");
+        $scope.loadingItem = angular.element(document.querySelector('#loading-item'));
+        $scope.loadingItem.css("display", "none");
 
     };
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $window.history.back();
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $window.history.back();
+        }
+    }];
 
     $scope.name = $stateParams.name;
 
@@ -226,7 +226,7 @@ mediaApp.controller('SearchmedicinesCtrl', function($scope, $ionicLoading, $http
 
 //console.log($scope.medicinesList.length);
 
-    /*if ($scope.medicinesList) {
+/*if ($scope.medicinesList) {
      console.log("lefut");
      setTimeout(function() {
      $scope.refreshiScroll();
@@ -268,12 +268,12 @@ mediaApp.controller('MedicineviewCtrl', function($scope, $ionicLoading, $statePa
     $stateParams.productId;
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $window.history.back();
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $window.history.back();
+        }
+    }];
 
     $http({
         method: 'GET',
@@ -311,6 +311,63 @@ mediaApp.controller('MedicineviewCtrl', function($scope, $ionicLoading, $statePa
 });
 
 mediaApp.controller('MedicineleaflatCtrl', function($scope, $ionicLoading, $stateParams, $state, $http, $window, $templateCache, $sce) {
+   
+    $scope.scroll = null;
+
+    $scope.iScroll = function() {
+        $scope.scroll && $scope.scroll.destroy();
+        $scope.scroll = new iScroll('betegtajekoztato', {
+            hScroll: false
+        });
+        setTimeout(function() {
+            $scope.scroll.refresh();
+        }, 100);
+    }
+
+    /*$scope.show = function() {
+        $scope.loading = $ionicLoading.show({
+            content: 'Betöltés...'
+        });
+    };
+    $scope.hide = function() {
+        $scope.loading.hide();
+    };
+
+   // $scope.show();
+   
+    /*$http({
+        method: 'GET',
+        url: "http://medikal.hu/hu/products/leaflatmobil/product/" + $stateParams.id,
+        data: {},
+        timeout: 15000,
+        cache: $templateCache
+    }).success(function(result) {
+        //console.log(result);
+        $scope.product = result;
+        $scope.iScroll();
+        $scope.hide();
+        autoResize();
+    }).error(function(e) {
+        //console.log(e);
+        $scope.hide();
+        $state.go('menu.error');
+    });*/
+    
+    $scope.trustSrc = function(src) {
+        return $sce.trustAsResourceUrl(src);
+    }
+
+    $scope.frameUrl = $scope.trustSrc("http://medikal.hu/hu/products/leaflatmobil/product/" + $stateParams.id);
+
+    //$scope.hide();
+
+    $scope.iScroll();      
+    
+    
+});
+
+
+/*mediaApp.controller('MedicineleaflatCtrl', function($scope, $ionicLoading, $stateParams, $state, $http, $window, $templateCache, $sce) {
     $scope.navTitle = "Gyógyszerek";
 
     $scope.scroll = null;
@@ -350,7 +407,7 @@ mediaApp.controller('MedicineleaflatCtrl', function($scope, $ionicLoading, $stat
         return $sce.trustAsResourceUrl(src);
     }
 
-    $scope.frameUrl = $scope.trustSrc("http://medikal.hu/hu/products/leaflat/product/" + $stateParams.id);
+    $scope.frameUrl = $scope.trustSrc("http://medikal.hu/hu/products/leaflatmobil/product/" + $stateParams.id);
 
     $scope.hide();
 
@@ -371,164 +428,164 @@ mediaApp.controller('MedicineleaflatCtrl', function($scope, $ionicLoading, $stat
      //console.log(e);
      $scope.hide();
      $state.go('menu.error');
-     });*/
+     });
 
-});
+});*/
 
 mediaApp.controller('DiseaselistCtrl', function($scope, $location) {
     $scope.navTitle = "Tünetek";
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $location.path("/");
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $location.path("/");
+        }
+    }];
 });
 
 mediaApp.controller('AgyCtrl', function($scope, $window) {
     $scope.navTitle = "Tünetek: Agy";
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $window.history.back();
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $window.history.back();
+        }
+    }];
 });
 
 mediaApp.controller('ArcCtrl', function($scope, $window) {
     $scope.navTitle = "Tünetek: Arc";
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $window.history.back();
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $window.history.back();
+        }
+    }];
 });
 
 mediaApp.controller('TorokCtrl', function($scope, $window) {
     $scope.navTitle = "Tünetek: Torok";
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $window.history.back();
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $window.history.back();
+        }
+    }];
 });
 
 mediaApp.controller('MellkasCtrl', function($scope, $window) {
     $scope.navTitle = "Tünetek: Mellkas";
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $window.history.back();
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $window.history.back();
+        }
+    }];
 });
 
 mediaApp.controller('HassCtrl', function($scope, $window) {
     $scope.navTitle = "Tünetek: Has";
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $window.history.back();
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $window.history.back();
+        }
+    }];
 });
 
 mediaApp.controller('AgyekCtrl', function($scope, $window) {
     $scope.navTitle = "Tünetek: Ágyék";
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $window.history.back();
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $window.history.back();
+        }
+    }];
 });
 
 mediaApp.controller('LabCtrl', function($scope, $window) {
     $scope.navTitle = "Tünetek: Láb";
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $window.history.back();
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $window.history.back();
+        }
+    }];
 });
 
 mediaApp.controller('KarCtrl', function($scope, $window) {
     $scope.navTitle = "Tünetek: Kar";
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $window.history.back();
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $window.history.back();
+        }
+    }];
 });
 
 mediaApp.controller('HatCtrl', function($scope, $window) {
     $scope.navTitle = "Tünetek: Hát";
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $window.history.back();
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $window.history.back();
+        }
+    }];
 });
 
 mediaApp.controller('BorCtrl', function($scope, $window) {
     $scope.navTitle = "Tünetek: Bőr";
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $window.history.back();
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $window.history.back();
+        }
+    }];
 });
 
 mediaApp.controller('SzervezetCtrl', function($scope, $window) {
     $scope.navTitle = "Tünetek: Szervezet";
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $window.history.back();
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $window.history.back();
+        }
+    }];
 });
 
 mediaApp.controller('FenekCtrl', function($scope, $window) {
     $scope.navTitle = "Tünetek: Fenék";
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $window.history.back();
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $window.history.back();
+        }
+    }];
 });
 
 mediaApp.controller('BodyCtrl', function($scope, $location, preloader, $interval) {
@@ -539,12 +596,12 @@ mediaApp.controller('BodyCtrl', function($scope, $location, preloader, $interval
     $scope.i = 0;
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $location.path("/");
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $location.path("/");
+        }
+    }];
 
 
     $scope.doSomething = function() {
@@ -560,58 +617,58 @@ mediaApp.controller('BodyCtrl', function($scope, $location, preloader, $interval
     // NOTE: "cache" attribute is to prevent images from caching in the
     // browser (for the sake of the demo).
     $scope.imageLocations = [
-        ("img/body/00.png"),
-        ("img/body/05.png"),
-        ("img/body/10.png"),
-        ("img/body/15.png"),
-        ("img/body/25.png"),
-        ("img/body/30.png"),
-        ("img/body/35.png"),
-        ("img/body/40.png"),
-        ("img/body/45.png"),
-        ("img/body/50.png"),
-        ("img/body/55.png"),
-        ("img/body/60.png"),
-        ("img/body/65.png"),
-        ("img/body/70.png"),
-        ("img/body/75.png"),
-        ("img/body/80.png"),
-        ("img/body/85.png"),
-        ("img/body/90.png"),
-        ("img/body/95.png"),
+    ("img/body/00.png"),
+    ("img/body/05.png"),
+    ("img/body/10.png"),
+    ("img/body/15.png"),
+    ("img/body/25.png"),
+    ("img/body/30.png"),
+    ("img/body/35.png"),
+    ("img/body/40.png"),
+    ("img/body/45.png"),
+    ("img/body/50.png"),
+    ("img/body/55.png"),
+    ("img/body/60.png"),
+    ("img/body/65.png"),
+    ("img/body/70.png"),
+    ("img/body/75.png"),
+    ("img/body/80.png"),
+    ("img/body/85.png"),
+    ("img/body/90.png"),
+    ("img/body/95.png"),
     ];
 
 
 
     // Preload the images; then, update display when returned.
     preloader.preloadImages($scope.imageLocations).then(
-            function handleResolve(imageLocations) {
+        function handleResolve(imageLocations) {
 
-                // Loading was successful.
-                $scope.isLoading = false;
-                $scope.isSuccessful = true;
+            // Loading was successful.
+            $scope.isLoading = false;
+            $scope.isSuccessful = true;
 
-                console.info("Preload Successful");
+            console.info("Preload Successful");
 
-            },
-            function handleReject(imageLocation) {
+        },
+        function handleReject(imageLocation) {
 
-                // Loading failed on at least one image.
-                $scope.isLoading = false;
-                $scope.isSuccessful = false;
+            // Loading failed on at least one image.
+            $scope.isLoading = false;
+            $scope.isSuccessful = false;
 
-                console.error("Image Failed", imageLocation);
-                console.info("Preload Failure");
+            console.error("Image Failed", imageLocation);
+            console.info("Preload Failure");
 
-            },
-            function handleNotify(event) {
+        },
+        function handleNotify(event) {
 
-                $scope.percentLoaded = event.percent;
+            $scope.percentLoaded = event.percent;
 
-                //console.info("Percent loaded:", event.percent);
+        //console.info("Percent loaded:", event.percent);
 
-            }
-    );
+        }
+        );
 
     $scope.front = true;
     $scope.side = false;
@@ -698,16 +755,16 @@ mediaApp.controller('DiseaseCtrl', function($scope, $location, $stateParams, $st
     $scope.hide = function() {
         //$scope.loading.hide();
         $scope.loadingItem = angular.element(document.querySelector('#loading-item'));
-         $scope.loadingItem.css("display", "none");
+        $scope.loadingItem.css("display", "none");
     };
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $window.history.back();
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $window.history.back();
+        }
+    }];
 
     $http({
         method: 'GET',
@@ -760,12 +817,12 @@ mediaApp.controller('MedicinesFullCtrl', function($scope, $window, $ionicLoading
     }
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $window.history.back();
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $window.history.back();
+        }
+    }];
 
 
     $scope.selectedTestAccount = null;
@@ -785,7 +842,7 @@ mediaApp.controller('MedicinesFullCtrl', function($scope, $window, $ionicLoading
         $scope.hide();
     }).error(function(e) {
 
-    })
+        })
     //}
 
     //$timeout(countUp, 500);
@@ -827,12 +884,12 @@ mediaApp.controller('ProductquestionCtrl', function($scope, $ionicLoading, $stat
     $scope.iScroll();
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $window.history.back();
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $window.history.back();
+        }
+    }];
 
     $scope.sent = function() {
 
@@ -849,12 +906,12 @@ mediaApp.controller('PlacesCtrl', function($scope, $state, $window) {
     $scope.navTitle = "Gyógyszertárkereső";
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $window.history.back();
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $window.history.back();
+        }
+    }];
 
     $scope.fixHeight = function() {
         $scope.viewCss = angular.element(document.querySelector('.view'));
@@ -905,7 +962,7 @@ mediaApp.controller('PlacesCtrl', function($scope, $state, $window) {
         /*if ($scope.name == "" && $scope.city == "" && $scope.zip_code == "") {
          */
         $state.go('menu.gps');
-        /*
+    /*
          }*/
     }
 
@@ -938,16 +995,16 @@ mediaApp.controller('PlaceslistCtrl', function($scope, $ionicLoading, $timeout, 
     $scope.hide = function() {
         //$scope.loading.hide();
         $scope.loadingItem = angular.element(document.querySelector('#loading-item'));
-         $scope.loadingItem.css("display", "none");
+        $scope.loadingItem.css("display", "none");
     };
 
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $window.history.back();
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $window.history.back();
+        }
+    }];
 
     $scope.name = $stateParams.name;
     $scope.city = $stateParams.city;
@@ -1001,12 +1058,12 @@ mediaApp.controller('GpsCtrl', function($scope, $location, $ionicLoading, $state
     };
     $scope.show();
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $window.history.back();
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $window.history.back();
+        }
+    }];
     $scope.lat = "0";
     $scope.lng = "0";
     $scope.accuracy = "0";
@@ -1144,12 +1201,12 @@ mediaApp.controller('PlaceviewCtrl', function($scope, $location, $ionicLoading, 
     };
     $scope.show();
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $window.history.back();
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $window.history.back();
+        }
+    }];
     $scope.latitude = $stateParams.latitude;
     $scope.longitude = $stateParams.longitude;
     $scope.map = {
@@ -1179,12 +1236,12 @@ mediaApp.controller('GpsPlaceviewCtrl', function($scope, $ionicLoading, $statePa
     };
     $scope.show();
     $scope.leftButtons = [{
-            type: 'button-clear',
-            content: 'Vissza',
-            tap: function(e) {
-                $window.history.back();
-            }
-        }];
+        type: 'button-clear',
+        content: 'Vissza',
+        tap: function(e) {
+            $window.history.back();
+        }
+    }];
     $scope.latitude = $stateParams.latitude;
     $scope.longitude = $stateParams.longitude;
     $scope.ownLatitude = $stateParams.ownLat;
@@ -1194,8 +1251,8 @@ mediaApp.controller('GpsPlaceviewCtrl', function($scope, $ionicLoading, $statePa
     $scope.ownLine2 = new google.maps.LatLng($scope.latitude, $scope.longitude);
 
     $scope.ownLine = [
-        $scope.ownLine1,
-        $scope.ownLine2
+    $scope.ownLine1,
+    $scope.ownLine2
     ]
 
     $scope.map = {
