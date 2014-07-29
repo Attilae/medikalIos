@@ -14,6 +14,7 @@
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
     
-    <icon src="img/logo.jpg" />        
+    <icon src="res/ios/icon-57-2x.png" width="60" height="60" />
+    <icon src="res/ios/icon-72-2x.png" width="120" height="120" />       
     
 </widget>
