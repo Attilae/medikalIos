@@ -340,10 +340,10 @@ mediaApp.controller('MedicineleaflatCtrl', function($scope, $ionicLoading, $stat
     $scope.hide = function() {
         $scope.loading.hide();
     };
-
-   // $scope.show();
+*/
+   //$scope.show();
    
-    /*$http({
+    $http({
         method: 'GET',
         url: "http://medikal.hu/hu/products/leaflatmobil/product/" + $stateParams.id,
         data: {},
@@ -351,7 +351,9 @@ mediaApp.controller('MedicineleaflatCtrl', function($scope, $ionicLoading, $stat
         cache: $templateCache
     }).success(function(result) {
         //console.log(result);
-        $scope.product = result;
+        
+        var regex = /<br\s*[\/]?>/gi;        
+        $scope.product = result.replace(regex, "\n\n")
         $scope.iScroll();
         $scope.hide();
         autoResize();
@@ -359,9 +361,9 @@ mediaApp.controller('MedicineleaflatCtrl', function($scope, $ionicLoading, $stat
         //console.log(e);
         $scope.hide();
         $state.go('menu.error');
-    });*/
+    });
     
-    $scope.trustSrc = function(src) {
+   /* $scope.trustSrc = function(src) {
         return $sce.trustAsResourceUrl(src);
     }
 
@@ -371,7 +373,7 @@ mediaApp.controller('MedicineleaflatCtrl', function($scope, $ionicLoading, $stat
 
     //$scope.iScroll();      
     
-    
+    */
 });
 
 
@@ -737,7 +739,7 @@ mediaApp.controller('BodyCtrl', function($scope, $location, preloader, $interval
 
 });
 
-mediaApp.controller('DiseaseCtrl', function($scope, $location, $stateParams, $state, $http, $ionicLoading, $window, $templateCache) {
+mediaApp.controller('DiseaseCtrl', function($scope, $location, $stateParams, $state, $http, $ionicLoading, $templateCache) {
     $scope.navTitle = "Tünet: " + $stateParams.id;
 
     $scope.show = function() {
@@ -770,7 +772,7 @@ mediaApp.controller('DiseaseCtrl', function($scope, $location, $stateParams, $st
         type: 'button-clear',
         content: 'Vissza',
         tap: function(e) {
-            $window.history.back();
+            $state.go('menu.diseaselist')
         }
     }];
 
@@ -1228,6 +1230,8 @@ mediaApp.controller('PlaceviewCtrl', function($scope, $location, $ionicLoading, 
         latitude: $scope.longitude,
         longitude: $scope.latitude
     }
+    
+    $scope.icon = "http://medikal.hu/public/skins/mediapp/images/pharmacy.png";
 
     $scope.hide();
 });
@@ -1280,7 +1284,7 @@ mediaApp.controller('GpsPlaceviewCtrl', function($scope, $ionicLoading, $statePa
         longitude: $scope.ownLongitude
     }
 
-    $scope.icon = "http://medikal.hu/public/skins/mediapp/images/marker.png";
+    $scope.icon = "http://medikal.hu/public/skins/mediapp/images/pharmacy.png";
 
     $scope.hide();
 });
