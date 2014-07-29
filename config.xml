@@ -6,7 +6,7 @@
         id        = "com.carpedm.medikal"
         version   = "1.4.0">
 
-    <name>Medikal</name>
+    <name>Gyógyszerinfo</name>
 
     <description>
         Hello World sample application that responds to the deviceready event.
