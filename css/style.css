@@ -278,6 +278,11 @@ dd a {
     opacity: 0.1;*/
 }
 
+
+dd a:active {
+    background: #4AD89A !important;
+}
+
 .front a {
     /*background: #ffe800;*/
 }
