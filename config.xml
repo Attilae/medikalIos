@@ -6,10 +6,10 @@
         id        = "com.carpedm.medikal"
         version   = "1.4.0">
 
-    <name>Gyógyszerinfo</name>
+    <name>Gyógyszer</name>
 
     <description>
-        Hello World sample application that responds to the deviceready event.
+        Medikal
     </description>
 
     <author href="http://phonegap.com" email="support@phonegap.com">

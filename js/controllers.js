@@ -2,7 +2,7 @@
 
 mediaApp.controller('MainCtrl', function($scope, $timeout) {
 
-    $scope.navTitle = 'Gyógyszerinfó';
+    $scope.navTitle = 'Gyógyszer';
 
     ionic.Platform.ready(function() {
         console.log("Cordova is ready");
