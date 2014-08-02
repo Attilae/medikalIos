@@ -7,7 +7,7 @@
                     Betöltés...
                 </li>
                 <li class="item" ng:repeat="item in disease" >
-                    <a href="#/menu/medicineview/{{item.id}}">{{item.name}}</a>                
+                    <a href="#/menu/medicineview/{{item.id}}">{{item.name}} {{item.presentation}}/{{item.quantity_unit}}</a>                
                 </li>
                 <li class="no-result" ng-if="disease.length == 0">
                     Nincs találat
