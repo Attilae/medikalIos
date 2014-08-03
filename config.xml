@@ -18,11 +18,7 @@
     
     <feature name="Geolocation">
         <param name="android-package" value="org.apache.cordova.GeoBroker" />
-    </feature>
-    
-    <gap:plugin name="org.apache.cordova.geolocation" />
-    
-    <gap:plugin name="org.apache.cordova.splashscreen" />    
+    </feature>  
     
     <icon src="logo.png" />     
     
