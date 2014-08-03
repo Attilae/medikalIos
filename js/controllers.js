@@ -1068,12 +1068,11 @@ mediaApp.controller('GpsCtrl', function($scope, $location, $ionicLoading, $state
     };
     $scope.show();
     $scope.leftButtons = [{
-        type: 'button-clear',
-        content: 'Vissza',
-        tap: function(e) {
-            $window.history.back();
-        }
-    }];
+            type: 'button-icon button-clear ion-arrow-left-b',
+            tap: function(e) {
+                $window.history.back();
+            }
+        }];
     $scope.lat = "0";
     $scope.lng = "0";
     $scope.accuracy = "0";
@@ -1120,7 +1119,7 @@ mediaApp.controller('GpsCtrl', function($scope, $location, $ionicLoading, $state
                                     method: 'GET',
                                     url: 'http://medikal.hu/hu/places/jsonsearch/city//zip_code/' + postalCode,
                                     data: {},
-                                    timeout: 10000,
+                                    timeout: 5000,
                                     cache: $templateCache
                                 }).success(function(result) {
                                     console.log(result);
@@ -1128,17 +1127,15 @@ mediaApp.controller('GpsCtrl', function($scope, $location, $ionicLoading, $state
                                     $scope.hide2();
                                 }).error(function(e) {
                                     //console.log(e);
-                                    $scope.hide();
                                     $scope.hide2();
-                                    $state.go('menu.medicines');
+                                    $state.go('menu.error');
                                 });
                             }
                         }
                     }
                 } else {
-                    $scope.hide();
                     $scope.hide2();
-                    $state.go('menu.questionsent');
+                    $state.go('menu.error');
                 }
             })
         })
@@ -1151,23 +1148,19 @@ mediaApp.controller('GpsCtrl', function($scope, $location, $ionicLoading, $state
         switch (error.code) {
             case error.PERMISSION_DENIED:
                 $scope.error = "User denied the request for Geolocation."
-                $scope.hide();
-                $state.go('menu.diseaselist');
+                $state.go('menu.error');
                 break;
             case error.POSITION_UNAVAILABLE:
                 $scope.error = "Location information is unavailable."
-                $scope.hide();
-                $state.go('menu.agy');
+                $state.go('menu.error');
                 break;
             case error.TIMEOUT:
                 $scope.error = "The request to get user location timed out."
-                $scope.hide();
-                $state.go('menu.fenek');
+                $state.go('menu.error');
                 break;
             case error.UNKNOWN_ERROR:
                 $scope.error = "An unknown error occurred."
-                $scope.hide();
-                $state.go('menu.arc');
+                $state.go('menu.error');
                 break;
         }
         $scope.$apply();
@@ -1175,12 +1168,11 @@ mediaApp.controller('GpsCtrl', function($scope, $location, $ionicLoading, $state
 
     $scope.getLocation = function() {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition($scope.showPosition, $scope.showError, {timeout:10000});
+            navigator.geolocation.getCurrentPosition($scope.showPosition, $scope.showError);
         }
         else {
-            $scope.hide();
             $scope.error = "Geolocation is not supported by this browser.";
-            $state.go('menu.torok');
+            $state.go('menu.error');
         }
     }
 
@@ -1198,6 +1190,40 @@ mediaApp.controller('GpsCtrl', function($scope, $location, $ionicLoading, $state
         });
     }
 })
+
+mediaApp.controller('PlaceviewCtrl', function($scope, $location, $ionicLoading, $stateParams, $state, $http, $window) {
+    $scope.navTitle = "Gyógysztertárak";
+    $scope.show = function() {
+        $scope.loading = $ionicLoading.show({
+            content: 'Betöltés...'
+        });
+    };
+    $scope.hide = function() {
+        $scope.loading.hide();
+    };
+    $scope.show();
+    $scope.leftButtons = [{
+            type: 'button-icon button-clear ion-arrow-left-b',
+            tap: function(e) {
+                $window.history.back();
+            }
+        }];
+    $scope.latitude = $stateParams.latitude;
+    $scope.longitude = $stateParams.longitude;
+    $scope.map = {
+        center: {
+            latitude: $scope.longitude,
+            longitude: $scope.latitude
+        },
+        zoom: 17
+    };
+    $scope.coords = {
+        latitude: $scope.longitude,
+        longitude: $scope.latitude
+    }
+
+    $scope.hide();
+});
 
 mediaApp.controller('PlaceviewCtrl', function($scope, $location, $ionicLoading, $stateParams, $state, $http, $window) {
     $scope.navTitle = "Gyógysztertárak";
