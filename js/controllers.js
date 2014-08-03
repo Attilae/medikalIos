@@ -1130,7 +1130,7 @@ mediaApp.controller('GpsCtrl', function($scope, $location, $ionicLoading, $state
                                     //console.log(e);
                                     $scope.hide();
                                     $scope.hide2();
-                                    $state.go('menu.gpserror');
+                                    $state.go('menu.medicines');
                                 });
                             }
                         }
@@ -1138,7 +1138,7 @@ mediaApp.controller('GpsCtrl', function($scope, $location, $ionicLoading, $state
                 } else {
                     $scope.hide();
                     $scope.hide2();
-                    $state.go('menu.gpserror');
+                    $state.go('menu.questionsent');
                 }
             })
         })
@@ -1152,22 +1152,22 @@ mediaApp.controller('GpsCtrl', function($scope, $location, $ionicLoading, $state
             case error.PERMISSION_DENIED:
                 $scope.error = "User denied the request for Geolocation."
                 $scope.hide();
-                $state.go('menu.gpserror');
+                $state.go('menu.diseaselist');
                 break;
             case error.POSITION_UNAVAILABLE:
                 $scope.error = "Location information is unavailable."
                 $scope.hide();
-                $state.go('menu.gpserror');
+                $state.go('menu.agy');
                 break;
             case error.TIMEOUT:
                 $scope.error = "The request to get user location timed out."
                 $scope.hide();
-                $state.go('menu.gpserror');
+                $state.go('menu.fenek');
                 break;
             case error.UNKNOWN_ERROR:
                 $scope.error = "An unknown error occurred."
                 $scope.hide();
-                $state.go('menu.gpserror');
+                $state.go('menu.arc');
                 break;
         }
         $scope.$apply();
@@ -1180,7 +1180,7 @@ mediaApp.controller('GpsCtrl', function($scope, $location, $ionicLoading, $state
         else {
             $scope.hide();
             $scope.error = "Geolocation is not supported by this browser.";
-            $state.go('menu.gpserror');
+            $state.go('menu.torok');
         }
     }
 
