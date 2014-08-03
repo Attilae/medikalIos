@@ -1175,7 +1175,7 @@ mediaApp.controller('GpsCtrl', function($scope, $location, $ionicLoading, $state
 
     $scope.getLocation = function() {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition($scope.showPosition, $scope.showError);
+            navigator.geolocation.getCurrentPosition($scope.showPosition, $scope.showError, {timeout:10000});
         }
         else {
             $scope.hide();
